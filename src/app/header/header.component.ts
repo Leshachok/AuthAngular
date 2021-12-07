@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, Input } from '@angular/core';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,13 @@ import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Input() navBarTmpl: TemplateRef<any>;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  onSignOut(){
+    this.authService.logout
   }
 
 }

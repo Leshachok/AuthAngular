@@ -12,7 +12,7 @@ import { tap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class LoginInterceptor implements HttpInterceptor {
+export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) {
   }
@@ -28,14 +28,12 @@ export class LoginInterceptor implements HttpInterceptor {
         }
       });
     }
-    return next.handle(req).pipe(
-      
+    return next.handle(req).pipe(     
       tap(
         (event) => {
           if (event instanceof HttpResponse){
             console.log('Server response')
-
-        }
+          }
         },
         (err) => {
           if (err instanceof HttpErrorResponse) {
@@ -47,7 +45,6 @@ export class LoginInterceptor implements HttpInterceptor {
         }
       )
     )
-
-    }
+  }
 
 }

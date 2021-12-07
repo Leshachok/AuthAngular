@@ -13,7 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { LoginInterceptor } from './core/interceptors/token.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { LoginInterceptor } from './core/interceptors/token.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: LoginInterceptor,
+      useClass: TokenInterceptor,
       multi: true
     }
   ],

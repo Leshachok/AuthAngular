@@ -38,18 +38,16 @@ export class AuthService {
         this.router.navigate(['/orders'])
       }, error => {
         console.error(error)
+        alert('Invalid data')
       })
-      
-      
   }  
   
 
   logout(): void {
     localStorage.removeItem(this.accessTokenKey);
     this.isLoggedIn = false;
-    this.router.navigate(['/'])
-    alert('Unauthorized')
-    // TODO: navigate to login page
+
+    this.router.navigate([''])
   }
 
   getUserName(): void {
@@ -63,8 +61,6 @@ export class AuthService {
 }
 
 class Response{
-
   access_token:string = ''
   username:string = ''
-
 }

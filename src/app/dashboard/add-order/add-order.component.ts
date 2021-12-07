@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Order } from 'src/app/models/order.model';
-import { UsersService } from 'src/app/core/api/users.service';
-import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-add-order',
@@ -18,15 +16,11 @@ export class AddOrderComponent implements OnInit {
 
   readonly pricePlaceholder = 'Price';
 
-  constructor(private formBuilder: FormBuilder,
-              private usersService: UsersService) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
     this.buildForm();
-
-    this.usersService.currentUser
-      .subscribe((user: User) => console.log('currentUser from Add order', user));
 
     this.ordersCount = +localStorage.getItem('ordersCount');
   }
